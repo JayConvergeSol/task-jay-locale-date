@@ -3,6 +3,7 @@ import { PrimeNGConfig } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { LocaleService } from '../../shared/service/locale.service';
 import { ShowDateComponent } from '../../shared/dialog/showDate.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-calendar',
@@ -13,14 +14,15 @@ export class CalendarComponent {
   title = 'task-jay-locale-date';
   ref: DynamicDialogRef | undefined;
   date!: Date ;
-  dateUTC :string ='';
+  dateUTC :string | null ='';
   localeData :any
   
   constructor(
     @Inject(LOCALE_ID) public locale: string,
     private primengConfig: PrimeNGConfig,
     private localeService : LocaleService,
-    public dialogService: DialogService
+    public dialogService: DialogService,
+    public datePipe : DatePipe
   ){}
     
   ngOnInit(): void {
@@ -29,8 +31,7 @@ export class CalendarComponent {
   }
 
   StoreDate(){
-    let month = this.date.getUTCMonth()+1;
-    this.dateUTC = this.date.getUTCFullYear()+"-"+month+"-"+ this.date.getUTCDate()+" "+ this.date.getUTCHours()+":"+this.date.getUTCMinutes()+":"+this.date.getUTCSeconds();
+    this.dateUTC = this.datePipe.transform(this.date,"yyyy-MM-ddThh:mm:ss:+0000",'UTC')
   }
 
   changeLocale(locale : string) {

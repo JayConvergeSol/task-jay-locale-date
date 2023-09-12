@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CalendarModule } from 'primeng/calendar';
@@ -24,6 +24,6 @@ import { localeDateRoutingModule } from './locale-date-routing.module';
     ButtonModule,
     
   ],
-  providers:[ DialogService]
+  providers:[ DialogService,DatePipe]
 })
 export class LocaleDateModule { }
