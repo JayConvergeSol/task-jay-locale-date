@@ -1,0 +1,16 @@
+<div class="d-flex   flex-column mt-3">
+    <table class="table">
+      <tr>
+        <td>
+          <p-calendar [(ngModel)]="date" [showTime]="true" [showSeconds]="true"></p-calendar>
+          <p-button (click)="StoreDate()" icon="pi pi-info-circle" label="Store Value"></p-button>
+        </td>
+        <td>
+          {{dateUTC}}
+        </td>
+        <td>
+          <p-button (click)="show()" icon="pi pi-info-circle" label="Display Dialog"></p-button>
+        </td>
+      </tr>
+    </table>  
+  </div>
